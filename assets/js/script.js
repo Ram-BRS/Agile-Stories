@@ -13,6 +13,7 @@ const priority = document.getElementById("priority");
 const storySubmitBtn = document.getElementById("storySubmitBtn");
 const storyCardList = document.getElementById("storyCardList");
 const descrptionLength = document.getElementById("descLength");
+const taskTitle = document.getElementById('title');
 const maxLength = 100;
 const warnLength = 90;
 
@@ -138,6 +139,11 @@ const formValidate = (e) => {
     priority.focus();
     return;
   }
+  if (taskTitle.value === ""){
+    alert("Please enter title");
+    taskTitle.focus();
+    return;
+  }
   const newStory = {
     id: "id" + Math.random().toString(16).slice(2), //generate id
     description: description.value,
@@ -149,6 +155,7 @@ const formValidate = (e) => {
   assignedto.value = "";
   priority.value = "";
   descrptionLength.innerHTML = "";
+  taskTitle.value = "";
   updateList(newStory, "");
 };
 

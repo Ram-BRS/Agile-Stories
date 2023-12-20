@@ -21,6 +21,18 @@ h1 {
     text-align: center;
 }
 
+.task-title{
+    display: block;
+}
+
+#title {
+    display: block;
+    margin-bottom: 1rem;
+}
+#title:hover{
+    box-shadow: 2px 2px 2px var(--chathams_blue);
+}
+
 p {
     text-align: center;
 }
