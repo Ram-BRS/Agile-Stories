@@ -140,7 +140,7 @@ const formValidate = (e) => {
     return;
   }
   if (enterTaskTitle.value === ""){
-    alert("Please enter title");
+    alert("Please enter Task title");
     taskTitle.focus();
     return;
   }
