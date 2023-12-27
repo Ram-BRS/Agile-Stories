@@ -1,4 +1,3 @@
-// Init priority list, assigned to list and stories array
 const priorityList = ["Low", "Medium", "High"];
 const assignedToList = ["Edwin", "Tom", "Carl", "Jerome", "Carmelo"];
 let storyList = [];
@@ -10,10 +9,10 @@ let chathams_blue = "#1A4B84";
 const description = document.getElementById("description");
 const assignedto = document.getElementById("assignedto");
 const priority = document.getElementById("priority");
+let title = document.getElementById('title');
 const storySubmitBtn = document.getElementById("storySubmitBtn");
 const storyCardList = document.getElementById("storyCardList");
 const descrptionLength = document.getElementById("descLength");
-const enterTaskTitle = document.getElementById('title');
 const maxLength = 100;
 const warnLength = 90;
 
@@ -76,6 +75,7 @@ const updateList = (newStory, updatedList) => {
             ${issue.storyStatus === "open" ? "open" : "closed"}</span>
             </div>
             <div class="card-body">
+            <h4>Title : ${issue.title}</h4>
             <p class="text-start pb-1">Assigned to : ${
               assignedToList[issue.assignedTo]
             }</p>
@@ -119,6 +119,11 @@ initApp();
 // form validation
 const formValidate = (e) => {
   e.preventDefault();
+  if(title.value === ""){
+    alert("Please enter title");
+    title.focus();
+    return;
+  }
   if (description.value === "") {
     alert("Please enter description");
     description.focus();
@@ -139,23 +144,19 @@ const formValidate = (e) => {
     priority.focus();
     return;
   }
-  if (enterTaskTitle.value === ""){
-    alert("Please enter Task title");
-    taskTitle.focus();
-    return;
-  }
   const newStory = {
     id: "id" + Math.random().toString(16).slice(2), //generate id
     description: description.value,
     assignedTo: assignedto.value,
     priority: priority.value,
+    title: title.value,
     storyStatus: "open",
   };
   description.value = "";
   assignedto.value = "";
   priority.value = "";
   descrptionLength.innerHTML = "";
-  taskTitle.value = "";
+  title.value = "";
   updateList(newStory, "");
 };
 
